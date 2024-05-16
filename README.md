@@ -11,5 +11,5 @@ bazel build :main
 ```
 
 ```bash
-bazel run :main
+bazel run :main -- testdata/test.txt
 ```
