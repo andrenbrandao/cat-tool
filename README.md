@@ -7,9 +7,9 @@ cat - Unix Command line tool built as a John Crickett's Coding Challenge.
 First, make sure you have [Bazel](https://bazel.build/install) installed.
 
 ```bash
-bazel build :main
+bazel build :ccat
 ```
 
 ```bash
-bazel run :main -- testdata/test.txt
+bazel run :ccat -- testdata/test.txt
 ```
