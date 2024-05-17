@@ -1,6 +1,6 @@
 # cat-tool
 
-cat - Unix Command line tool built as a John Crickett's Coding Challenge.
+cat - Unix Command line tool built for John Crickett's Coding Challenge.
 
 ## How to build and run
 
