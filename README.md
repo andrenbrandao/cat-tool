@@ -13,3 +13,9 @@ bazel build :ccat
 ```bash
 bazel run :ccat -- testdata/test.txt
 ```
+
+To read from stdin:
+
+```bash
+head -n1 testdata/test.txt | ./bazel-bin/ccat -
+```
