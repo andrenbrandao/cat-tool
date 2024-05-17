@@ -7,13 +7,13 @@ constexpr int line_number_left_padding_length = 6;
 constexpr int line_number_right_padding_length = 2;
 
 void PrintLineNumber(int line_number) {
-  int line_number_str_length = line_number / 10 + 1;
-  for (int i = 0; i < line_number_left_padding_length - line_number_str_length;
-       i++) {
+  std::string line_number_str = std::to_string(line_number);
+  for (int i = 0;
+       i < line_number_left_padding_length - line_number_str.length(); i++) {
     std::cout << " ";
   }
 
-  std::cout << line_number;
+  std::cout << line_number_str;
 
   for (int i = 0; i < line_number_right_padding_length; i++) {
     std::cout << " ";
