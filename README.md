@@ -19,3 +19,9 @@ To read from stdin:
 ```bash
 head -n1 testdata/test.txt | ./bazel-bin/ccat -
 ```
+
+Printing line numbers:
+
+```bash
+bazel run :ccat -- -n testdata/test.txt
+```
