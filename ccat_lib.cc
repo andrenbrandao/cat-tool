@@ -20,17 +20,18 @@ void PrintLineNumber(std::ostream &output_stream, int line_number) {
 }
 
 void PrintFile(std::istream &input_stream, std::ostream &output_stream,
-               bool print_line_numbers, bool number_blank_lines) {
+               LineNumberConfig line_number_config) {
   int line_number = 1;
 
   std::string str_read{};
   while (std::getline(input_stream, str_read)) {
-    if (str_read.length() == 0 && !number_blank_lines) {
+    if (str_read.length() == 0 &&
+        line_number_config == LineNumberConfig::NonBlankLinesOnly) {
       output_stream << str_read << '\n';
       continue;
     }
 
-    if (print_line_numbers) {
+    if (line_number_config != LineNumberConfig::Off) {
       PrintLineNumber(output_stream, line_number);
       line_number++;
     }

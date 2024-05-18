@@ -6,18 +6,16 @@
 #include <vector>
 
 int main(int argc, char *argv[]) {
-  bool print_line_numbers = false;
-  bool number_blank_lines = true;
+  LineNumberConfig line_number_config = LineNumberConfig::Off;
 
   std::vector<std::string> filenames;
 
   for (int i = 1; i < argc; i++) {
     const std::string &sv = argv[i];
     if (sv == "-n") {
-      print_line_numbers = true;
+      line_number_config = LineNumberConfig::On;
     } else if (sv == "-b") {
-      number_blank_lines = false;
-      print_line_numbers = true;
+      line_number_config = LineNumberConfig::NonBlankLinesOnly;
     } else {
       filenames.push_back(sv);
     }
@@ -30,14 +28,14 @@ int main(int argc, char *argv[]) {
   for (const std::string &filename : filenames) {
 
     if (filename == "-") {
-      PrintFile(std::cin, std::cout, print_line_numbers, number_blank_lines);
+      PrintFile(std::cin, std::cout, line_number_config);
     } else {
       std::ifstream file{filename};
       if (!file) {
         std::cerr << "Could not open file " + filename << std::endl;
         return 1;
       }
-      PrintFile(file, std::cout, print_line_numbers, number_blank_lines);
+      PrintFile(file, std::cout, line_number_config);
     }
   }
 

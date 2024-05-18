@@ -3,7 +3,9 @@
 
 #include <iostream>
 
+enum class LineNumberConfig { Off, On, NonBlankLinesOnly };
+
 void PrintFile(std::istream &input_stream, std::ostream &output_stream,
-               bool print_line_numbers, bool number_blank_lines);
+               LineNumberConfig line_number_config = LineNumberConfig::Off);
 
 #endif // !CCAT_LIB_H
