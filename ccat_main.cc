@@ -35,11 +35,6 @@ void PrintFile(std::istream &input_stream, bool print_line_numbers) {
 }
 
 int main(int argc, char *argv[]) {
-  if (argc < 2) {
-    std::cout << "Must add a filename" << std::endl;
-    return 0;
-  }
-
   std::vector<std::string> filenames;
   bool print_line_numbers = false;
 
@@ -50,6 +45,10 @@ int main(int argc, char *argv[]) {
     } else {
       filenames.push_back(sv);
     }
+  }
+
+  if (filenames.size() == 0) {
+    filenames.push_back("-");
   }
 
   for (const std::string &filename : filenames) {
