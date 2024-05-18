@@ -3,7 +3,8 @@ load("@rules_cc//cc:defs.bzl", "cc_binary")
 cc_binary(
   name = "ccat",
   srcs = ["ccat_main.cc"],
-  data = ["testdata/test.txt", "testdata/test2.txt"]
+  data = ["testdata/test.txt", "testdata/test2.txt"],
+  deps = [":ccat_lib"]
 )
 
 cc_library(

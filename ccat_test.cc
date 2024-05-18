@@ -1,13 +1,11 @@
 #include "ccat_lib.h"
 #include <gtest/gtest.h>
+#include <sstream>
 
-// Tests factorial of 0.
-TEST(FactorialTest, HandlesZeroInput) { EXPECT_EQ(Factorial(0), 1); }
-
-// Tests factorial of positive numbers.
-TEST(FactorialTest, HandlesPositiveInput) {
-  EXPECT_EQ(Factorial(1), 1);
-  EXPECT_EQ(Factorial(2), 2);
-  EXPECT_EQ(Factorial(3), 6);
-  EXPECT_EQ(Factorial(8), 40320);
+// Tests printing of an input stream
+TEST(PrintFileTest, OutputsLinesOfStream) {
+  std::istringstream input_stream("hello\nthere");
+  std::ostringstream output_stream{};
+  PrintFile(input_stream, output_stream, false, false);
+  EXPECT_EQ(output_stream.str(), "hello\nthere\n");
 }
