@@ -11,18 +11,18 @@ int main(int argc, char *argv[]) {
   std::vector<std::string> filenames;
 
   for (int i = 1; i < argc; i++) {
-    const std::string &sv = argv[i];
-    if (sv == "-n") {
+    const std::string &arg = argv[i];
+    if (arg == "-n") {
       line_number_config = LineNumberConfig::On;
-    } else if (sv == "-b") {
+    } else if (arg == "-b") {
       line_number_config = LineNumberConfig::NonBlankLinesOnly;
     } else {
-      filenames.push_back(sv);
+      filenames.push_back(arg);
     }
   }
 
-  if (filenames.size() == 0) {
-    filenames.push_back("-");
+  if (filenames.empty()) {
+    filenames.emplace_back("-");
   }
 
   for (const std::string &filename : filenames) {
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
     } else {
       std::ifstream file{filename};
       if (!file) {
-        std::cerr << "Could not open file " + filename << std::endl;
+        std::cerr << "Could not open file " + filename << '\n';
         return 1;
       }
       PrintFile(file, std::cout, line_number_config);
