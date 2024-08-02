@@ -26,6 +26,12 @@ Printing line numbers:
 bazel run :ccat -- -n testdata/test.txt
 ```
 
+Printing line numbers only on non blank lines:
+
+```bash
+sed G testdata/test.txt | ./bazel-bin/ccat -b
+```
+
 ## Running the tests
 
 ```bash

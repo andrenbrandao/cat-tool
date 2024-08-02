@@ -4,7 +4,7 @@ cc_binary(
   name = "ccat",
   srcs = ["ccat_main.cc"],
   data = ["testdata/test.txt", "testdata/test2.txt"],
-  deps = [":ccat_lib"]
+  deps = [":ccat_lib", "@abseil-cpp//absl/flags:flag", "@abseil-cpp//absl/flags:parse"]
 )
 
 cc_library(
