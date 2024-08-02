@@ -14,7 +14,7 @@ TEST(PrintFileTest, PrintsLineNumbers) {
   std::istringstream input_stream("hello\nthere");
   std::ostringstream output_stream{};
   PrintFile(input_stream, output_stream, LineNumberConfig::On);
-  EXPECT_EQ(output_stream.str(), "     1  hello\n     2  there\n");
+  EXPECT_EQ(output_stream.str(), "     1\thello\n     2\tthere\n");
 }
 
 TEST(PrintFileTest, PrintsLineNumbersOfBlankLines) {
@@ -23,7 +23,7 @@ TEST(PrintFileTest, PrintsLineNumbersOfBlankLines) {
   PrintFile(input_stream, output_stream, LineNumberConfig::On);
   EXPECT_EQ(
       output_stream.str(),
-      "     1  hello\n     2  \n     3  there\n     4  \n     5  again\n");
+      "     1\thello\n     2\t\n     3\tthere\n     4\t\n     5\tagain\n");
 }
 
 TEST(PrintFileTest, PrintsNonBlankLineNumbersOnly) {
@@ -31,5 +31,5 @@ TEST(PrintFileTest, PrintsNonBlankLineNumbersOnly) {
   std::ostringstream output_stream{};
   PrintFile(input_stream, output_stream, LineNumberConfig::NonBlankLinesOnly);
   EXPECT_EQ(output_stream.str(),
-            "     1  hello\n\n     2  there\n\n     3  again\n");
+            "     1\thello\n\n     2\tthere\n\n     3\tagain\n");
 }

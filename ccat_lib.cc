@@ -1,7 +1,6 @@
 #include "ccat_lib.h"
 
 constexpr int line_number_left_padding_length = 6;
-constexpr int line_number_right_padding_length = 2;
 
 void PrintLineNumber(std::ostream &output_stream, int line_number) {
   std::string line_number_str = std::to_string(line_number);
@@ -12,11 +11,7 @@ void PrintLineNumber(std::ostream &output_stream, int line_number) {
     output_stream << " ";
   }
 
-  output_stream << line_number_str;
-
-  for (int i = 0; i < line_number_right_padding_length; i++) {
-    output_stream << " ";
-  }
+  output_stream << line_number_str << "\t";
 }
 
 void PrintFile(std::istream &input_stream, std::ostream &output_stream,

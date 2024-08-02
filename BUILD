@@ -19,3 +19,17 @@ cc_test(
   srcs = ["ccat_test.cc"],
   deps = ["@com_google_googletest//:gtest_main", ":ccat_lib"],
 )
+
+sh_test(
+    name = "ccat_integration_test",
+    size = "small",
+    srcs = ["main_test.sh"],
+    data = [
+      "testdata/test.txt",
+      ":ccat"
+    ],
+    args = [
+      '$(location :testdata/test.txt)',
+      '$(location :ccat)',
+    ],
+)
