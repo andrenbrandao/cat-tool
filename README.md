@@ -35,7 +35,17 @@ sed G testdata/test.txt | ./bazel-bin/ccat -b
 ## Running the tests
 
 ```bash
-bazel test --test_output=all :ccat_test
+bazel test --test_output=all :all
+```
+
+## Autocomplete with Neovim
+
+Because we are using Bazel, `clangd` autocomplete in Neovim doesn't know where to find the headers. To fix it, I'm using [Hedron's Compile Commands Extractor for Bazel](https://github.com/hedronvision/bazel-compile-commands-extractor).
+
+Execute the following command to fix autocomplete when new dependencies are installed:
+
+```
+bazel run @hedron_compile_commands//:refresh_all --noincompatible_sandbox_hermetic_tmp
 ```
 
 ## Resources
